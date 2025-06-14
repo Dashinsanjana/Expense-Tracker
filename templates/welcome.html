@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome | Expense Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('{{ url_for("static", filename="welcome_bg.png") }}') no-repeat center center fixed;
+            background-size: cover;
+            z-index: -1;
+            opacity: 0.5; /* increased from 0.25 */
+        }
+
+        .welcome-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .welcome-box {
+            background: rgba(255, 255, 255, 0.96);
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 520px;
+            width: 90%;
+            backdrop-filter: blur(5px);
+        }
+
+        .welcome-box h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #1e2d3b;
+            letter-spacing: 1px;
+        }
+
+        .welcome-box p {
+            font-size: 18px;
+            color: #444;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .welcome-buttons a {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 32px;
+            margin: 10px;
+            border-radius: 30px;
+            background-color: #4CAF50;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .welcome-buttons a:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            .welcome-box {
+                padding: 40px 25px;
+            }
+
+            .welcome-box h1 {
+                font-size: 30px;
+            }
+
+            .welcome-box p {
+                font-size: 16px;
+            }
+
+            .welcome-buttons a {
+                font-size: 14px;
+                padding: 10px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="welcome-container">
+        <div class="welcome-box">
+            <h1>Welcome to Expense Tracker</h1>
+            <p>Easily manage your income and expenses, gain insights, and stay in control of your budget.</p>
+            <div class="welcome-buttons">
+                <a href="{{ url_for('signup') }}">Sign Up</a>
+                <a href="{{ url_for('login') }}">Login</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

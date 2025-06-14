@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Expense Tracker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+    .navbar {
+      background-color: #4e73df;
+      padding: 15px;
+      color: white;
+      text-align: center;
+    }
+    .navbar a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+    }
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    .card h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .card label {
+      display: block;
+      margin-top: 10px;
+    }
+    .card input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .card input[type="submit"] {
+      background-color: #4e73df;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    .card input[type="submit"]:hover {
+      background-color: #3a5bb9;
+    }
+    footer {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    footer a {
+      color: #f8f9fa;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <span>Expense Tracker</span>
+    <div>
+      <a href="/login">Login</a>
+      <a href="/signup">Sign Up</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>Login</h2>
+      <form method="POST" action="{{ url_for('login') }}" autocomplete="on">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required autocomplete="username">
+
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required autocomplete="current-password">
+
+        <input type="submit" value="Login">
+      </form>
+      <p style="text-align: center; margin-top: 1rem;">Don't have an account? <a href="/signup">Sign up here</a></p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Expense Tracker. All rights reserved.</p>
+    <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a>
+  </footer>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="alert">
+        {% for category, message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+</body>
+</html>

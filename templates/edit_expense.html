@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Expense</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    .content-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      flex-grow: 1;
+    }
+    footer {
+      margin-top: auto;
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+    footer a {
+      color: #f8f9fa;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body style="background-color: #f8f9fa;">
+  <div class="content-wrapper">
+    <!-- Navigation Bar -->
+    <div class="navbar" style="background-color: #4e73df; padding: 10px;">
+      <span style="color: white; font-size: 20px;">Expense Tracker</span>
+      <div>
+        <a href="/dashboard" style="color: white; margin-left: 15px;">Dashboard</a>
+        <a href="/logout" style="color: white; margin-left: 15px;">Logout</a>
+      </div>
+    </div>
+
+    <div class="container py-4">
+      <h2>Edit Expense</h2>
+
+      <form method="POST">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <input type="text" name="description" class="form-control" placeholder="Description" value="{{ expense.description }}" required>
+          </div>
+          <div class="col-md-3">
+            <input type="number" name="amount" class="form-control" placeholder="Amount" value="{{ expense.amount }}" step="0.01" required>
+          </div>
+          <div class="col-md-3">
+            <input type="text" name="category" class="form-control" placeholder="Category" value="{{ expense.category }}" required>
+          </div>
+          <div class="col-md-3">
+            <input type="date" name="date" class="form-control" value="{{ expense.date }}" required>
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-outline-success w-100">Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Expense Tracker. All rights reserved.</p>
+    <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a>
+  </footer>
+</body>
+</html>
